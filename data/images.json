@@ -1,0 +1,92 @@
+[
+  {
+    "src": "assets/images/leopard-dawn.jpg",
+    "alt": "A leopard emerging from tall grass at dawn in the Sundarbans, golden light catching its rosette pattern",
+    "title": "Dawn Patrol",
+    "category": "Mammals"
+  },
+  {
+    "src": "assets/images/siberian-crane-flight.jpg",
+    "alt": "A Siberian crane in mid-flight with wings fully extended against a pale winter sky",
+    "title": "Winter Migration",
+    "category": "Birds"
+  },
+  {
+    "src": "assets/images/king-cobra-strike.jpg",
+    "alt": "A king cobra rearing up with hood fully spread, striking pose in dense forest undergrowth",
+    "title": "The Strike",
+    "category": "Reptiles"
+  },
+  {
+    "src": "assets/images/elephant-family-river.jpg",
+    "alt": "A family of Asian elephants wading through a shallow river, matriarch leading the group",
+    "title": "River Crossing",
+    "category": "Mammals"
+  },
+  {
+    "src": "assets/images/peacock-display.jpg",
+    "alt": "An Indian peacock in full display with iridescent blue and green feathers fanned out",
+    "title": "Courtship Dance",
+    "category": "Birds"
+  },
+  {
+    "src": "assets/images/tiger-swim.jpg",
+    "alt": "A Bengal tiger swimming through calm water with only its head and back visible above the surface",
+    "title": "Silent Hunter",
+    "category": "Mammals"
+  },
+  {
+    "src": "assets/images/kingfisher-perch.jpg",
+    "alt": "A common kingfisher perched on a branch above still water, bright orange and blue plumage vivid",
+    "title": "Patient Hunter",
+    "category": "Birds"
+  },
+  {
+    "src": "assets/images/rhino-mud-bath.jpg",
+    "alt": "A one-horned rhinoceros covered in mud after a bath, standing in a grassy clearing",
+    "title": "Mud Armor",
+    "category": "Mammals"
+  },
+  {
+    "src": "assets/images/kingfisher-dive.jpg",
+    "alt": "A kingfisher diving into water creating a splash, captured at high shutter speed",
+    "title": "The Dive",
+    "category": "Birds"
+  },
+  {
+    "src": "assets/images/monitor-lizard-cliff.jpg",
+    "alt": "A Komodo dragon climbing a rocky cliff face in the Indonesian archipelago",
+    "title": "Ancient Guardian",
+    "category": "Reptiles"
+  },
+  {
+    "src": "assets/images/night-owl-portrait.jpg",
+    "alt": "A close-up portrait of a great horned owl with piercing yellow eyes in low light",
+    "title": "Night Watcher",
+    "category": "Birds"
+  },
+  {
+    "src": "assets/images/cheetah-run.jpg",
+    "alt": "A cheetah at full sprint across open savanna, legs extended and body low to the ground",
+    "title": "Full Throttle",
+    "category": "Mammals"
+  },
+  {
+    "src": "assets/images/sea-turtle-nest.jpg",
+    "alt": "A green sea turtle laying eggs on a dark tropical beach under moonlight",
+    "title": "Moonlit Return",
+    "category": "Reptiles"
+  },
+  {
+    "src": "assets/images/ibis-flock.jpg",
+    "alt": "A large flock of black ibises taking flight from a wetland, creating a dramatic silhouette",
+    "title": "Flock Departure",
+    "category": "Birds"
+  },
+  {
+    "src": "assets/images/leopard-cub-play.jpg",
+    "alt": "Two leopard cubs playing and wrestling in soft morning light, paws extended",
+    "title": "Playtime",
+    "category": "Mammals"
+  }
+]
