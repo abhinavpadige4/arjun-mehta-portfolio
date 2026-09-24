@@ -1,179 +1,130 @@
-import { initLightbox } from './lightbox-init.js';
+/**
+ * gallery.js
+ * Fetches image metadata from data/images.json and renders
+ * a responsive gallery grid with lazy-loaded images.
+ */
 
-const GALLERY_ENDPOINT = 'data/images.json';
 const GALLERY_CONTAINER_ID = 'gallery-grid';
-const FILTER_CONTAINER_ID = 'gallery-filters';
+const DATA_PATH = 'data/images.json';
+const PLACEHOLDER_SRC = 'assets/images/placeholder.jpg';
 
-const CATEGORY_ORDER = ['All', 'Birds', 'Mammals', 'Reptiles', 'Amphibians', 'Marine', 'Insects'];
-
-let allImages = [];
-let activeFilter = 'All';
-
-async function fetchImageMetadata() {
+/**
+ * Fetch image metadata from the JSON data file.
+ * @returns {Promise<Array>} Array of ImageItem objects.
+ */
+async function fetchImageData() {
   try {
-    const response = await fetch(GALLERY_ENDPOINT);
+    const response = await fetch(DATA_PATH);
     if (!response.ok) {
-      throw new Error(`HTTP ${response.status}: ${response.statusText}`);
+      throw new Error(`HTTP error ${response.status} fetching ${DATA_PATH}`);
     }
     const data = await response.json();
     if (!Array.isArray(data)) {
-      throw new Error('Expected an array of image items');
+      throw new Error('Expected an array of ImageItem objects.');
     }
     return data;
-  } catch (error) {
-    console.error('[Gallery] Failed to fetch image metadata:', error.message);
-    renderErrorState(error.message);
+  } catch (err) {
+    console.error('[gallery.js] Failed to load image data:', err.message);
     return [];
   }
 }
 
-function renderErrorState(message) {
-  const container = document.getElementById(GALLERY_CONTAINER_ID);
-  if (!container) return;
-  container.innerHTML = `
-    <div class="gallery-error flex flex-col items-center justify-center py-20 px-6 text-center">
-      <svg class="w-16 h-16 mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24" aria-hidden="true">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M4 16l4.586-4.586a2 2 0 012.828 0L16 16m-2-2l1.586-1.586a2 2 0 012.828 0L20 14m-6-6h.01M6 20h12a2 2 0 002-2V6a2 2 0 00-2-2H6a2 2 0 00-2 2v12a2 2 0 002 2z" />
-      </svg>
-      <h3 class="text-xl font-semibold text-white mb-2">Gallery Unavailable</h3>
-      <p class="text-gray-400 max-w-md">${escapeHtml(message)}. Please check back later or contact the photographer directly.</p>
-    </div>
-  `;
-}
-
-function escapeHtml(text) {
-  const div = document.createElement('div');
-  div.textContent = text;
-  return div.innerHTML;
-}
-
-function buildFilterCategories(images) {
-  const categories = new Set();
-  images.forEach(img => {
-    if (img.category) categories.add(img.category);
-  });
-  const ordered = CATEGORY_ORDER.filter(c => c === 'All' || categories.has(c));
-  categories.forEach(c => {
-    if (!ordered.includes(c)) ordered.push(c);
-  });
-  return ordered;
-}
-
-function renderFilterButtons(categories) {
-  const container = document.getElementById(FILTER_CONTAINER_ID);
-  if (!container) return;
-  container.innerHTML = '';
-  categories.forEach(category => {
-    const button = document.createElement('button');
-    button.type = 'button';
-    button.className = `gallery-filter-btn px-4 py-2 rounded-full text-sm font-medium transition-all duration-300 border ${
-      category === activeFilter
-        ? 'bg-[#FF6B6B] text-white border-[#FF6B6B]'
-        : 'bg-transparent text-gray-300 border-gray-600 hover:border-[#FF6B6B] hover:text-white'
-    }`;
-    button.textContent = category;
-    button.setAttribute('aria-pressed', category === activeFilter ? 'true' : 'false');
-    button.addEventListener('click', () => {
-      activeFilter = category;
-      renderFilterButtons(categories);
-      renderGallery();
-    });
-    container.appendChild(button);
-  });
-}
-
-function createGalleryItem(image) {
+/**
+ * Create a single gallery item DOM element.
+ * @param {Object} item - ImageItem object with src, alt, title, category.
+ * @returns {HTMLElement} The gallery item element.
+ */
+function createGalleryItem(item) {
   const article = document.createElement('article');
-  article.className = 'gallery-item group relative overflow-hidden rounded-lg cursor-pointer bg-gray-900';
-  article.setAttribute('data-category', image.category || 'Uncategorized');
+  article.className =
+    'gallery-item group relative overflow-hidden rounded-lg bg-neutral-900 cursor-pointer transition-transform duration-300 hover:scale-[1.02]';
+  article.setAttribute('data-category', item.category || '');
+  article.setAttribute('data-title', item.title || '');
 
   const img = document.createElement('img');
-  img.src = image.src;
-  img.alt = image.alt || `Wildlife photograph by Arjun Mehta`;
+  img.src = item.src || PLACEHOLDER_SRC;
+  img.alt = item.alt || '';
   img.loading = 'lazy';
   img.decoding = 'async';
-  img.className = 'w-full h-full object-cover transition-transform duration-500 group-hover:scale-110';
-  img.setAttribute('data-lightbox', 'gallery');
-  img.setAttribute('data-title', image.title || '');
-  img.setAttribute('data-description', image.alt || '');
+  img.className =
+    'w-full h-full object-cover transition-opacity duration-500 opacity-0';
+  img.addEventListener('load', () => {
+    img.classList.remove('opacity-0');
+    img.classList.add('opacity-100');
+  });
+  img.addEventListener('error', () => {
+    img.src = PLACEHOLDER_SRC;
+    img.classList.remove('opacity-0');
+    img.classList.add('opacity-100');
+  });
 
   const overlay = document.createElement('div');
-  overlay.className = 'absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4';
+  overlay.className =
+    'absolute inset-0 bg-gradient-to-t from-black/70 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-4';
 
-  const titleEl = document.createElement('h3');
-  titleEl.className = 'text-white font-semibold text-lg mb-1';
-  titleEl.textContent = image.title || 'Untitled';
+  const caption = document.createElement('div');
+  caption.className = 'text-white';
 
-  const categoryEl = document.createElement('span');
-  categoryEl.className = 'text-[#FF6B6B] text-sm font-medium uppercase tracking-wider';
-  categoryEl.textContent = image.category || 'Wildlife';
+  if (item.title) {
+    const titleEl = document.createElement('h3');
+    titleEl.className = 'text-lg font-semibold leading-tight';
+    titleEl.textContent = item.title;
+    caption.appendChild(titleEl);
+  }
 
-  overlay.appendChild(titleEl);
-  overlay.appendChild(categoryEl);
+  if (item.category) {
+    const catEl = document.createElement('span');
+    catEl.className = 'text-sm text-neutral-300 mt-1 block';
+    catEl.textContent = item.category;
+    caption.appendChild(catEl);
+  }
+
+  overlay.appendChild(caption);
   article.appendChild(img);
   article.appendChild(overlay);
 
   return article;
 }
 
-function renderGallery() {
+/**
+ * Render the full gallery into the target container.
+ * @param {Array} images - Array of ImageItem objects.
+ */
+function renderGallery(images) {
   const container = document.getElementById(GALLERY_CONTAINER_ID);
-  if (!container) return;
-
-  const filtered = activeFilter === 'All'
-    ? allImages
-    : allImages.filter(img => img.category === activeFilter);
+  if (!container) {
+    console.error(
+      `[gallery.js] Gallery container #${GALLERY_CONTAINER_ID} not found.`
+    );
+    return;
+  }
 
   container.innerHTML = '';
 
-  if (filtered.length === 0) {
-    container.innerHTML = `
-      <div class="col-span-full flex flex-col items-center justify-center py-16 text-center">
-        <p class="text-gray-400 text-lg">No photographs in this category yet.</p>
-      </div>
-    `;
+  if (images.length === 0) {
+    const empty = document.createElement('p');
+    empty.className = 'text-center text-neutral-400 py-12 col-span-full';
+    empty.textContent = 'No photographs available at this time.';
+    container.appendChild(empty);
     return;
   }
 
   const fragment = document.createDocumentFragment();
-  filtered.forEach(image => {
-    fragment.appendChild(createGalleryItem(image));
+  images.forEach((item) => {
+    fragment.appendChild(createGalleryItem(item));
   });
   container.appendChild(fragment);
-
-  initLightbox();
 }
 
-function setupIntersectionObserver() {
-  const observer = new IntersectionObserver((entries) => {
-    entries.forEach(entry => {
-      if (entry.isIntersecting) {
-        const img = entry.target;
-        if (img.dataset.src) {
-          img.src = img.dataset.src;
-          img.removeAttribute('data-src');
-        }
-        img.classList.add('loaded');
-        observer.unobserve(img);
-      }
-    });
-  }, { rootMargin: '200px', threshold: 0.01 });
-
-  document.querySelectorAll('.gallery-item img[data-src]').forEach(img => {
-    observer.observe(img);
-  });
-}
-
+/**
+ * Initialize the gallery: fetch data and render.
+ */
 async function initGallery() {
-  allImages = await fetchImageMetadata();
-  if (allImages.length === 0) return;
-
-  const categories = buildFilterCategories(allImages);
-  renderFilterButtons(categories);
-  renderGallery();
-  setupIntersectionObserver();
+  const images = await fetchImageData();
+  renderGallery(images);
 }
 
+// Run when DOM is ready
 if (document.readyState === 'loading') {
   document.addEventListener('DOMContentLoaded', initGallery);
 } else {
