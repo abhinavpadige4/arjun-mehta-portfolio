@@ -1,0 +1,93 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1200 800" width="1200" height="800">
+<defs>
+<radialGradient id="sky" cx="50%" cy="30%" r="70%">
+<stop offset="0%" stop-color="#f5e6c8"/>
+<stop offset="40%" stop-color="#e8c99a"/>
+<stop offset="100%" stop-color="#8fa8b8"/>
+</radialGradient>
+<linearGradient id="ground" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#4a6741"/>
+<stop offset="100%" stop-color="#2d4a27"/>
+</linearGradient>
+<linearGradient id="water" x1="0" y1="0" x2="0" y2="1">
+<stop offset="0%" stop-color="#5b8fa8"/>
+<stop offset="100%" stop-color="#3a6b82"/>
+</linearGradient>
+<filter id="blur"><feGaussianBlur stdDeviation="2"/></filter>
+<filter id="softshadow"><feDropShadow dx="2" dy="4" stdDeviation="6" flood-opacity="0.3"/></filter>
+</defs>
+<rect width="1200" height="800" fill="url(#sky)"/>
+<ellipse cx="900" cy="150" rx="60" ry="60" fill="#fff8e0" opacity="0.9"/>
+<ellipse cx="900" cy="150" rx="80" ry="80" fill="#fff8e0" opacity="0.3"/>
+<ellipse cx="900" cy="150" rx="100" ry="100" fill="#fff8e0" opacity="0.1"/>
+<path d="M0 480 Q200 440 400 460 Q600 480 800 450 Q1000 420 1200 440 L1200 800 L0 800Z" fill="url(#ground)"/>
+<path d="M0 520 Q300 500 600 510 Q900 520 1200 500 L1200 800 L0 800Z" fill="#3d5a35" opacity="0.7"/>
+<ellipse cx="600" cy="620" rx="350" ry="80" fill="url(#water)" opacity="0.8"/>
+<ellipse cx="600" cy="620" rx="300" ry="60" fill="#6ba3b8" opacity="0.4"/>
+<g filter="url(#softshadow)">
+<ellipse cx="580" cy="540" rx="90" ry="55" fill="#8B6914"/>
+<ellipse cx="580" cy="530" rx="85" ry="50" fill="#a0782a"/>
+<ellipse cx="580" cy="525" rx="80" ry="45" fill="#b8862e"/>
+<ellipse cx="540" cy="510" rx="35" ry="30" fill="#a0782a"/>
+<ellipse cx="540" cy="505" rx="32" ry="27" fill="#b8862e"/>
+<circle cx="525" cy="498" r="4" fill="#1a1a1a"/>
+<circle cx="526" cy="497" r="1.5" fill="#fff"/>
+<circle cx="555" cy="498" r="4" fill="#1a1a1a"/>
+<circle cx="556" cy="497" r="1.5" fill="#fff"/>
+<ellipse cx="540" cy="515" rx="8" ry="5" fill="#8B6914"/>
+<path d="M530 512 Q540 508 550 512" stroke="#6b4f10" stroke-width="1.5" fill="none"/>
+<path d="M520 490 Q515 475 525 470" stroke="#8B6914" stroke-width="3" fill="none"/>
+<path d="M560 490 Q565 475 555 470" stroke="#8B6914" stroke-width="3" fill="none"/>
+<ellipse cx="510" cy="545" rx="12" ry="20" fill="#8B6914"/>
+<ellipse cx="510" cy="545" rx="10" ry="18" fill="#a0782a"/>
+<ellipse cx="650" cy="545" rx="12" ry="20" fill="#8B6914"/>
+<ellipse cx="650" cy="545" rx="10" ry="18" fill="#a0782a"/>
+<ellipse cx="545" cy="570" rx="12" ry="20" fill="#8B6914"/>
+<ellipse cx="545" cy="570" rx="10" ry="18" fill="#a0782a"/>
+<ellipse cx="615" cy="570" rx="12" ry="20" fill="#8B6914"/>
+<ellipse cx="615" cy="570" rx="10" ry="18" fill="#a0782a"/>
+<path d="M660 530 Q700 520 720 540 Q740 560 730 580" stroke="#a0782a" stroke-width="8" fill="none" stroke-linecap="round"/>
+<path d="M720 540 Q730 530 740 535" stroke="#8B6914" stroke-width="6" fill="none" stroke-linecap="round"/>
+</g>
+<g opacity="0.6">
+<path d="M100 460 Q120 400 140 460" stroke="#2d4a27" stroke-width="3" fill="none"/>
+<path d="M130 460 Q150 380 170 460" stroke="#3d5a35" stroke-width="3" fill="none"/>
+<path d="M160 460 Q180 410 200 460" stroke="#2d4a27" stroke-width="3" fill="none"/>
+<path d="M1050 440 Q1070 370 1090 440" stroke="#2d4a27" stroke-width="3" fill="none"/>
+<path d="M1080 440 Q1100 360 1120 440" stroke="#3d5a35" stroke-width="3" fill="none"/>
+<path d="M1110 440 Q1130 380 1150 440" stroke="#2d4a27" stroke-width="3" fill="none"/>
+</g>
+<g opacity="0.5">
+<path d="M250 470 L260 350 L270 470" fill="#4a6741"/>
+<path d="M240 400 Q260 380 280 400" fill="#5a7a51"/>
+<path d="M235 420 Q260 400 285 420" fill="#4a6741"/>
+<path d="M230 440 Q260 420 290 440" fill="#3d5a35"/>
+<path d="M950 450 L960 330 L970 450" fill="#4a6741"/>
+<path d="M940 380 Q960 360 980 380" fill="#5a7a51"/>
+<path d="M935 400 Q960 380 985 400" fill="#4a6741"/>
+<path d="M930 420 Q960 400 990 420" fill="#3d5a35"/>
+</g>
+<g opacity="0.3">
+<ellipse cx="350" cy="620" rx="40" ry="8" fill="#fff"/>
+<ellipse cx="700" cy="630" rx="30" ry="6" fill="#fff"/>
+<ellipse cx="500" cy="640" rx="25" ry="5" fill="#fff"/>
+</g>
+<g opacity="0.4">
+<path d="M300 200 Q320 190 340 200 Q360 210 380 200" stroke="#fff" stroke-width="2" fill="none"/>
+<path d="M400 180 Q420 170 440 180 Q460 190 480 180" stroke="#fff" stroke-width="2" fill="none"/>
+<path d="M700 160 Q720 150 740 160 Q760 170 780 160" stroke="#fff" stroke-width="2" fill="none"/>
+</g>
+<g opacity="0.7">
+<path d="M80 480 Q90 470 100 480" stroke="#5a7a51" stroke-width="2" fill="none"/>
+<path d="M110 478 Q120 468 130 478" stroke="#5a7a51" stroke-width="2" fill="none"/>
+<path d="M1050 460 Q1060 450 1070 460" stroke="#5a7a51" stroke-width="2" fill="none"/>
+<path d="M1080 458 Q1090 448 1100 458" stroke="#5a7a51" stroke-width="2" fill="none"/>
+</g>
+<g opacity="0.5">
+<circle cx="400" cy="600" r="3" fill="#fff"/>
+<circle cx="420" cy="610" r="2" fill="#fff"/>
+<circle cx="750" cy="605" r="3" fill="#fff"/>
+<circle cx="770" cy="615" r="2" fill="#fff"/>
+</g>
+<text x="600" y="770" text-anchor="middle" font-family="Georgia,serif" font-size="14" fill="#fff" opacity="0.6">Arjun Mehta — Wildlife Photography</text>
+</svg>
