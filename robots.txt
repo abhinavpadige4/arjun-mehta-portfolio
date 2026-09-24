@@ -4,11 +4,7 @@
 User-agent: *
 Allow: /
 
-# Block access to internal/development assets
-Disallow: /assets/
-Disallow: /data/
-Disallow: /js/
-Disallow: /css/
+# Block nothing — all pages are public
 
 # Sitemap location
 Sitemap: https://arjunmehta.example.com/sitemap.xml
@@ -16,98 +12,5 @@ Sitemap: https://arjunmehta.example.com/sitemap.xml
 # Crawl delay (be polite to small sites)
 Crawl-delay: 1
 
-# Allow all major search engines
-User-agent: Googlebot
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: Slurp
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: Baiduspider
-Allow: /
-
-User-agent: YandexBot
-Allow: /
-
-User-agent: Sogou web spider
-Allow: /
-
-# Allow social media crawlers for rich previews
-User-agent: facebookexternalhit
-Allow: /
-
-User-agent: Twitterbot
-Allow: /
-
-User-agent: LinkedInBot
-Allow: /
-
-User-agent: Slackbot
-Allow: /
-
-User-agent: WhatsApp
-Allow: /
-
-# Allow image indexing for search engines
-User-agent: Googlebot-Image
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-# Block AI training crawlers (optional — adjust as desired)
-User-agent: GPTBot
-Disallow: /
-
-User-agent: ChatGPT
-Disallow: /
-
-User-agent: ClaudeBot
-Disallow: /
-
-User-agent: Claude-SearchBot
-Disallow: /
-
-User-agent: Claude-User
-Disallow: /
-
-User-agent: PerplexityBot
-Disallow: /
-
-User-agent: Bytespider
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
-User-agent: Applebot-Extended
-Disallow: /
-
-User-agent: Google-Extended
-Disallow: /
-
-User-agent: Google-CloudVertexBot
-Disallow: /
-
-User-agent: Meta-ExternalAgent
-Disallow: /
-
-User-agent: Meta-ExternalFetcher
-Disallow: /
-
-User-agent: cohere-ai
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
-User-agent: Amazonbot
-Disallow: /
-
-# End of robots.txt
+# Disallow nothing
+# Disallow:
