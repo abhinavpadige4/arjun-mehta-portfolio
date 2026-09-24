@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arjun Mehta | Wildlife Photographer</title>
+  <meta name="description" content="Portfolio of Arjun Mehta, award-winning wildlife photographer capturing nature's raw beauty across continents.">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/glightbox/dist/css/glightbox.min.css">
+  <link rel="stylesheet" href="css/style.css">
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            primary: '#0D0D0D',
+            secondary: '#F5F5F5',
+            accent: '#FF6B6B',
+            muted: '#777777'
+          },
+          fontFamily: {
+            heading: ['Playfair Display', 'serif'],
+            body: ['Inter', 'sans-serif']
+          }
+        }
+      }
+    }
+  </script>
+</head>
+<body class="bg-primary text-white font-body antialiased">
+  <header class="fixed top-0 left-0 right-0 z-50 bg-primary/90 backdrop-blur-md border-b border-white/5">
+    <nav class="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
+      <a href="/" class="font-heading text-xl font-bold tracking-wide">Arjun Mehta</a>
+      <ul class="hidden md:flex items-center gap-8 text-sm font-medium">
+        <li><a href="/" class="text-accent hover:text-white transition-colors">Home</a></li>
+        <li><a href="/about.html" class="text-white/70 hover:text-white transition-colors">About</a></li>
+        <li><a href="/contact.html" class="text-white/70 hover:text-white transition-colors">Contact</a></li>
+      </ul>
+      <button id="mobile-menu-btn" class="md:hidden text-white/80 hover:text-white" aria-label="Toggle menu">
+        <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/></svg>
+      </button>
+    </nav>
+    <div id="mobile-menu" class="hidden md:hidden bg-primary/95 border-t border-white/5 px-6 py-4">
+      <ul class="flex flex-col gap-3 text-sm font-medium">
+        <li><a href="/" class="text-accent">Home</a></li>
+        <li><a href="/about.html" class="text-white/70">About</a></li>
+        <li><a href="/contact.html" class="text-white/70">Contact</a></li>
+      </ul>
+    </div>
+  </header>
+
+  <main>
+    <section class="relative min-h-screen flex items-center justify-center overflow-hidden">
+      <div class="absolute inset-0 bg-gradient-to-b from-primary via-primary/80 to-primary"></div>
+      <div class="absolute inset-0 opacity-20" style="background-image:url('assets/images/placeholder.jpg');background-size:cover;background-position:center;"></div>
+      <div class="relative z-10 text-center px-6 max-w-4xl mx-auto">
+        <p class="text-accent font-medium tracking-[0.3em] uppercase text-sm mb-4">Wildlife Photography</p>
+        <h1 class="font-heading text-5xl md:text-7xl font-bold leading-tight mb-6">Arjun Mehta</h1>
+        <p class="text-lg md:text-xl text-white/70 max-w-2xl mx-auto leading-relaxed">Capturing the untamed spirit of nature — one frame at a time. From the misty forests of the Himalayas to the golden plains of the Serengeti.</p>
+        <a href="#gallery" class="inline-block mt-10 px-8 py-3 bg-accent text-white font-medium rounded-full hover:bg-accent/90 transition-all hover:scale-105">View Portfolio</a>
+      </div>
+    </section>
+
+    <section id="gallery" class="py-20 px-6 max-w-7xl mx-auto">
+      <div class="text-center mb-12">
+        <h2 class="font-heading text-3xl md:text-4xl font-bold mb-3">Selected Works</h2>
+        <p class="text-muted">A curated collection of moments frozen in time</p>
+      </div>
+      <div id="gallery-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        <article class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer" data-category="Mammals">
+          <img src="assets/images/placeholder.jpg" alt="Snow leopard resting on a rocky outcrop in the Himalayas" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <div><h3 class="font-heading text-lg font-bold">Snow Leopard</h3><p class="text-white/60 text-sm">Himalayas, India</p></div>
+          </div>
+        </article>
+        <article class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer" data-category="Birds">
+          <img src="assets/images/placeholder.jpg" alt="Kingfisher diving into a still pond at dawn" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <div><h3 class="font-heading text-lg font-bold">Kingfisher Dive</h3><p class="text-white/60 text-sm">Kerala, India</p></div>
+          </div>
+        </article>
+        <article class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer" data-category="Mammals">
+          <img src="assets/images/placeholder.jpg" alt="African elephant herd crossing a river at sunset" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <div><h3 class="font-heading text-lg font-bold">Elephant Crossing</h3><p class="text-white/60 text-sm">Serengeti, Tanzania</p></div>
+          </div>
+        </article>
+        <article class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer" data-category="Birds">
+          <img src="assets/images/placeholder.jpg" alt="Eagle in mid-flight with wings fully spread against a stormy sky" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <div><h3 class="font-heading text-lg font-bold">Eagle in Flight</h3><p class="text-white/60 text-sm">Norway</p></div>
+          </div>
+        </article>
+        <article class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer" data-category="Reptiles">
+          <img src="assets/images/placeholder.jpg" alt="King cobra rearing up in a tropical rainforest" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <div><h3 class="font-heading text-lg font-bold">King Cobra</h3><p class="text-white/60 text-sm">Madagascar</p></div>
+          </div>
+        </article>
+        <article class="group relative overflow-hidden rounded-lg aspect-[4/3] cursor-pointer" data-category="Mammals">
+          <img src="assets/images/placeholder.jpg" alt="Tiger stalking through tall grass in golden hour light" loading="lazy" class="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110">
+          <div class="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex items-end p-5">
+            <div><h3 class="font-heading text-lg font-bold">Bengal Tiger</h3><p class="text-white/60 text-sm">Ranthambore, India</p></div>
+          </div>
+        </article>
+      </div>
+    </section>
+  </main>
+
+  <footer class="border-t border-white/5 py-10 px-6">
+    <div class="max-w-7xl mx-auto flex flex-col md:flex-row items-center justify-between gap-4">
+      <p class="text-muted text-sm">&copy; 2024 Arjun Mehta. All rights reserved.</p>
+      <div class="flex gap-6 text-sm text-muted">
+        <a href="/about.html" class="hover:text-white transition-colors">About</a>
+        <a href="/contact.html" class="hover:text-white transition-colors">Contact</a>
+      </div>
+    </div>
+  </footer>
+
+  <script src="https://cdn.jsdelivr.net/npm/glightbox/dist/js/glightbox.min.js"></script>
+  <script src="js/lightbox-init.js"></script>
+  <script src="js/gallery.js"></script>
+  <script>
+    document.getElementById('mobile-menu-btn').addEventListener('click', function() {
+      document.getElementById('mobile-menu').classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>
